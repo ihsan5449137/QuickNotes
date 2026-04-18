@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Notes App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Link to the separated CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <h1>My Notes</h1>
+        <span class="date-display" id="dateDisplay"></span>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <input type="text" class="search-bar" id="searchBar" placeholder="Search notes..." />
+                <button class="btn-new" id="btnNew">+ New</button>
+            </div>
+            <div class="notes-list" id="notesList"></div>
+        </aside>
+
+        <main class="editor" id="editorArea">
+            <div class="empty-editor" id="emptyState">
+                <div class="big-icon">📝</div>
+                <p>No note selected</p>
+                <span>Click "+ New" to create a note</span>
+            </div>
+        </main>
+    </div>
+
+    <footer class="footer">Notes App &copy; 2025 — All notes saved in your browser</footer>
+
+    <div class="toast" id="toast"></div>
+
+    <div class="modal-overlay" id="deleteModal">
+        <div class="modal-box">
+            <h3>Delete Note?</h3>
+            <p>This note will be permanently removed. This action cannot be undone.</p>
+            <div class="modal-btns">
+                <button class="btn-cancel" id="btnCancelDelete">Cancel</button>
+                <button class="btn-confirm-delete" id="btnConfirmDelete">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link to the separated JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>

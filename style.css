@@ -1,0 +1,393 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    background: #f0f2f5;
+    color: #333;
+    min-height: 100vh;
+}
+
+/* Header */
+.header {
+    background: #4a7cf7;
+    color: white;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+}
+
+.header .date-display {
+    font-size: 13px;
+    opacity: 0.85;
+    font-weight: 400;
+}
+
+/* Layout */
+.container {
+    display: flex;
+    max-width: 1100px;
+    margin: 24px auto;
+    gap: 20px;
+    padding: 0 20px;
+    min-height: calc(100vh - 100px);
+}
+
+/* Sidebar - Notes List */
+.sidebar {
+    width: 300px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sidebar-top {
+    display: flex;
+    gap: 8px;
+}
+
+.search-bar {
+    flex: 1;
+    padding: 9px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.search-bar:focus {
+    border-color: #4a7cf7;
+}
+
+.btn-new {
+    background: #4a7cf7;
+    color: white;
+    border: none;
+    padding: 9px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    white-space: nowrap;
+    transition: background 0.2s;
+}
+
+.btn-new:hover {
+    background: #3b6ce5;
+}
+
+.notes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    overflow-y: auto;
+    flex: 1;
+    padding-right: 4px;
+}
+
+.notes-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.notes-list::-webkit-scrollbar-thumb {
+    background: #c1c5cc;
+    border-radius: 10px;
+}
+
+.note-item {
+    padding: 12px 14px;
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.note-item:hover {
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.note-item.active {
+    border-color: #4a7cf7;
+    background: #f0f4ff;
+}
+
+.note-item .note-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.note-item .note-preview {
+    font-size: 12px;
+    color: #777;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.note-item .note-date {
+    font-size: 11px;
+    color: #aaa;
+    margin-top: 6px;
+}
+
+.empty-list {
+    text-align: center;
+    color: #999;
+    font-size: 13px;
+    margin-top: 40px;
+}
+
+.empty-list p {
+    margin-bottom: 4px;
+}
+
+/* Editor */
+.editor {
+    flex: 1;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.editor-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.editor-title {
+    flex: 1;
+    font-size: 18px;
+    font-weight: 700;
+    border: none;
+    outline: none;
+    font-family: inherit;
+    color: #222;
+}
+
+.editor-title::placeholder {
+    color: #bbb;
+}
+
+.editor-actions {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.btn-icon {
+    background: none;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: inherit;
+    color: #666;
+    transition: all 0.15s;
+}
+
+.btn-icon:hover {
+    background: #f5f5f5;
+    color: #333;
+}
+
+.btn-icon.delete:hover {
+    background: #fff0f0;
+    color: #d93025;
+    border-color: #f5c6c6;
+}
+
+.char-count {
+    font-size: 11px;
+    color: #bbb;
+}
+
+.editor-body {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.editor-textarea {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    line-height: 1.7;
+    font-family: inherit;
+    color: #444;
+    resize: none;
+}
+
+.editor-textarea::placeholder {
+    color: #ccc;
+}
+
+/* Empty state */
+.empty-editor {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #bbb;
+}
+
+.empty-editor .big-icon {
+    font-size: 48px;
+    margin-bottom: 12px;
+    opacity: 0.4;
+}
+
+.empty-editor p {
+    font-size: 14px;
+}
+
+.empty-editor span {
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+/* Toast */
+.toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #333;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: inherit;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.25s;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Confirm modal */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+.modal-box {
+    background: white;
+    padding: 24px;
+    border-radius: 10px;
+    width: 340px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.modal-box h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.modal-box p {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.modal-btns {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.modal-btns button {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    background: white;
+    color: #333;
+    transition: all 0.15s;
+}
+
+.modal-btns .btn-confirm-delete {
+    background: #d93025;
+    color: white;
+    border-color: #d93025;
+}
+
+.modal-btns .btn-confirm-delete:hover {
+    background: #c3221a;
+}
+
+.modal-btns .btn-cancel:hover {
+    background: #f5f5f5;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 12px;
+    font-size: 11px;
+    color: #bbb;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+    .container {
+        flex-direction: column;
+        padding: 0 12px;
+    }
+
+    .sidebar {
+        width: 100%;
+        max-height: 260px;
+    }
+
+    .editor {
+        min-height: 400px;
+    }
+}
