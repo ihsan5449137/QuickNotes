@@ -218,3 +218,4 @@ if (notes.length > 0) {
     });
     openNote(sorted[0].id);
 }
+// All Done 
